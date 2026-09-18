@@ -27,10 +27,12 @@ h1 {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.add-form input {
+.add-form input[type="text"] {
   flex: 1;
+  min-width: 12rem;
 }
 
 input,
@@ -50,6 +52,37 @@ button {
 button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #f4f5f7;
+}
+
+.stat.overdue,
+.stat-overdue.overdue {
+  background: #fdecec;
+  color: #8c2727;
+  font-weight: 600;
 }
 
 .filters {
@@ -107,6 +140,12 @@ button:disabled {
   background: #fff;
   border: 1px solid #dde1e7;
   border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.task-overdue {
+  border-color: #e0a8a8;
+  background: #fff5f5;
 }
 
 .task-title {
@@ -141,14 +180,48 @@ button:disabled {
   color: #1e6b34;
 }
 
+.badge-priority-low {
+  background: #e4e7eb;
+  color: #3e4c59;
+}
+
+.badge-priority-medium {
+  background: #e8f0fe;
+  color: #174ea6;
+}
+
+.badge-priority-high {
+  background: #fde8c8;
+  color: #8a5a00;
+}
+
+.badge-overdue {
+  background: #fdecec;
+  color: #8c2727;
+  font-weight: 600;
+}
+
+.due-date {
+  font-size: 0.85rem;
+  color: #68707d;
+  margin-left: 0.25rem;
+}
+
+.due-date.overdue {
+  color: #8c2727;
+  font-weight: 600;
+}
+
 .edit-form {
   flex: 1;
   display: flex;
   gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
-.edit-form input {
+.edit-form input[type="text"] {
   flex: 1;
+  min-width: 10rem;
 }
 
 .task-actions {

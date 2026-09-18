@@ -1,4 +1,4 @@
-import type { Task, TaskStatus } from './types'
+import type { Stats, Task, TaskPriority, TaskStatus } from './types'
 
 export const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'
@@ -42,16 +42,30 @@ export function listTasks(): Promise<Task[]> {
   return request<Task[]>('/tasks')
 }
 
-export function createTask(title: string, status: TaskStatus = 'todo'): Promise<Task> {
+export function getStats(): Promise<Stats> {
+  return request<Stats>('/stats')
+}
+
+export function createTask(
+  title: string,
+  status: TaskStatus = 'todo',
+  priority: TaskPriority = 'medium',
+  dueDate: string | null = null,
+): Promise<Task> {
   return request<Task>('/tasks', {
     method: 'POST',
-    body: JSON.stringify({ title, status }),
+    body: JSON.stringify({ title, status, priority, due_date: dueDate }),
   })
 }
 
 export function updateTask(
   id: number,
-  patch: { title?: string; status?: TaskStatus },
+  patch: {
+    title?: string
+    status?: TaskStatus
+    priority?: TaskPriority
+    due_date?: string | null
+  },
 ): Promise<Task> {
   return request<Task>(`/tasks/${id}`, {
     method: 'PATCH',
