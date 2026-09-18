@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS tasks (
     title TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'todo'
         CHECK (status IN ('todo', 'doing', 'done')),
+    priority TEXT NOT NULL DEFAULT 'medium'
+        CHECK (priority IN ('low', 'medium', 'high')),
+    due_date TEXT,
     created_at TEXT NOT NULL
 );
 """
@@ -27,6 +30,18 @@ def connect(path: str) -> sqlite3.Connection:
     return conn
 
 
+def _migrate(conn: sqlite3.Connection) -> None:
+    """Add columns introduced after the initial schema to existing DBs."""
+    columns = {row["name"] for row in conn.execute("PRAGMA table_info(tasks)")}
+    if "priority" not in columns:
+        conn.execute(
+            "ALTER TABLE tasks ADD COLUMN priority TEXT NOT NULL DEFAULT 'medium'"
+        )
+    if "due_date" not in columns:
+        conn.execute("ALTER TABLE tasks ADD COLUMN due_date TEXT")
+
+
 def init_db(path: str) -> None:
     with connect(path) as conn:
         conn.executescript(SCHEMA)
+        _migrate(conn)
