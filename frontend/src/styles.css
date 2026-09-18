@@ -1,0 +1,163 @@
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1f2933;
+  background: #f4f5f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+}
+
+.add-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-form input {
+  flex: 1;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #c4c9d1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.filter.active {
+  background: #1f2933;
+  color: #fff;
+  border-color: #1f2933;
+}
+
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e0a8a8;
+  border-radius: 6px;
+  background: #fdecec;
+  color: #8c2727;
+}
+
+.error button {
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: inherit;
+}
+
+.empty {
+  color: #68707d;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+}
+
+.task-title {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.task-done .task-title {
+  text-decoration: line-through;
+  color: #68707d;
+}
+
+.badge {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.badge-todo {
+  background: #e4e7eb;
+  color: #3e4c59;
+}
+
+.badge-doing {
+  background: #fde8c8;
+  color: #8a5a00;
+}
+
+.badge-done {
+  background: #d9f0df;
+  color: #1e6b34;
+}
+
+.edit-form {
+  flex: 1;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.edit-form input {
+  flex: 1;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.danger {
+  color: #a12a2a;
+  border-color: #e0a8a8;
+}
